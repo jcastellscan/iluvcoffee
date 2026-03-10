@@ -11,10 +11,15 @@ import { Flavor } from './flavor.entity';
 export class Coffee {
   @PrimaryGeneratedColumn() // primary key with auto increment
   id: number;
+
   @Column()
   name: string;
+
   @Column()
   brand: string;
+
+  @Column({ default: 0 })
+  recommendations: number;
 
   @JoinTable() // 👈 Join the 2 tables - only the OWNER-side does this
   @ManyToMany(
