@@ -9,6 +9,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import Joi from 'joi';
+import appConfig from './config/app.config';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import Joi from 'joi';
         DATABASE_HOST: Joi.required(),
         DATABASE_PORT: Joi.number().default(5432),
       }),
+      load: [appConfig],
     }),
     CoffeesModule,
     TypeOrmModule.forRoot({
