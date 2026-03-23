@@ -29,6 +29,8 @@ export class CoffeesService {
   }
 
   findAll(paginationQuery: PaginationQueryDto) {
+    // Simulate a long-running task by adding a delay of 5 seconds
+    // await new Promise((resolve) => setTimeout(resolve, 5000));
     return this.coffeeRepository.find({
       relations: {
         flavors: true,
